@@ -10,7 +10,7 @@ char *strip(char *token)
 		{	
 			int k=i;
 			while(token[k]!='\0')
-			{	
+			{
 				token[k]=token[k+1];
 				k++;
 			}
@@ -56,7 +56,7 @@ int get_value_from_key(char *key)
 	}
 	for(int i=0;i<count;i++)
 		free(key_value[i]);
-	fclose(fp);
+	fclose(fp);	
 	return flag;
 }
 int main()
@@ -70,3 +70,7 @@ int main()
 		printf("\nWARNING:Key Not Exists\n");
 	return 0;
 }
+
+
+
+poregvhbk
