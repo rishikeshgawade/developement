@@ -21,8 +21,7 @@ char *strip(char *token)
 // search key
 int get_value_from_key(char *key)
 {
-	int count=0,flag=0;
-	char line[255],*token,*key_value[100];
+	char line[255],*token;
 	FILE *fp=fopen("/tmp/NBAnswerFile.conf","r");
 	if(fp==NULL)
 	{
@@ -36,28 +35,15 @@ int get_value_from_key(char *key)
 			break;
 		if(strstr(line,"="))
 			token=strtok(line,"=");
-		while (token != NULL)
+		if(strstr(strip(token),strip(key)))
 		{
-			key_value[count] = (char *)calloc(255, sizeof(char));
-        		strcpy(key_value[count],strip(token));
-        		count++;
-        		token = strtok(NULL,"\n");
-    		}
-	}
-	// Search Value for key
-	for(int i=0;i<count;i=i+2)
-	{
-		if(strstr(key_value[i],key))
-		{
-			puts(key_value[i+1]);
-			flag=1;
-			break;
+			puts(token=strtok(NULL,"\n"));
+			fclose(fp);	
+			return 1;
 		}
 	}
-	for(int i=0;i<count;i++)
-		free(key_value[i]);
-	fclose(fp);	
-	return flag;
+	fclose(fp);
+	return 0;
 }
 int main()
 {
