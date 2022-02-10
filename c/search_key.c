@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 // Function for removing Spaces from String 
-char *strip(char token[100])
+char *strip(char *token)
 {
 	for(int i=0;i<strlen(token);i++)
 	{
